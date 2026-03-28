@@ -116,14 +116,6 @@ A technical paper based on this project was published in a Scopus-indexed procee
 > 7th International Conference on Internet of Things and Connected Technologies (ICIoTCT 2022)
 > Published in **Springer Nature — Lecture Notes in Networks and Systems (LNNS)**, 2023
 
-### Team
-
-| Name | GitHub |
-|---|---|
-| Nidhi Shrivastav | [@Nidhi1202](https://github.com/Nidhi1202) |
-| Palak Wadhwa | [@Pallak02](https://github.com/Pallak02) |
-| Aaryan Rastogi | [@Aaryan246](https://github.com/Aaryan246) |
-| Atharva Suryavanshi | [@Aaryan246](https://github.com/Aaryan246) |
 
 ---
 
