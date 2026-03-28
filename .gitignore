@@ -12,3 +12,15 @@ web-build/
 
 # macOS
 .DS_Store
+
+# Local env files
+.env
+.env.local
+.env*.local
+
+# Editor
+.vscode/
+.idea/
+
+# Metro cache
+.metro-health-check*

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   View,
   Text,
@@ -10,8 +10,8 @@ import styles from "./styles";
 import Msg from "./msg";
 import { Ionicons } from "@expo/vector-icons";
 
-let chats = [];
 const Chatbot = ({ props }) => {
+  const chats = useRef([]);
   const [msg, setMsg] = useState("");
   const [chatList, setChatList] = useState([]);
 
@@ -21,38 +21,38 @@ const Chatbot = ({ props }) => {
         q.toLowerCase()
       )
     ) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "I am Milo 🐾, your personal helper.",
           incomingMsg: true,
         },
       ];
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
       return;
     }
 
     if (/ola|namaste|hi|hello|ohaiyo|hello bot|hi bot/.test(q.toLowerCase())) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "Hello 👋",
           incomingMsg: true,
         },
       ];
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
       return;
     }
 
     if (/how are you|how's you|wbu/.test(q.toLowerCase())) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "I am great, thanks for asking ! 🤗",
           incomingMsg: true,
         },
       ];
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
       return;
     }
 
@@ -61,16 +61,16 @@ const Chatbot = ({ props }) => {
         q.toLowerCase()
       )
     ) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "I am very sorry to hear that.Maybe this could help to calm you down..",
           incomingMsg: true,
         },
       ];
 
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: (
             <View>
@@ -88,8 +88,8 @@ const Chatbot = ({ props }) => {
           incomingMsg: true,
         },
       ];
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: (
             <View>
@@ -107,22 +107,22 @@ const Chatbot = ({ props }) => {
           incomingMsg: true,
         },
       ];
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
 
       return;
     }
 
     if (/trouble sleeping|sleeplessness|insomnia/.test(q.toLowerCase())) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "Having trouble sleeping? I have some suggestions for you..",
           incomingMsg: true,
         },
       ];
 
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: (
             <View>
@@ -141,35 +141,35 @@ const Chatbot = ({ props }) => {
         },
       ];
 
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
       return;
     }
 
     if (
       /I am feeling great|I am feeling good|thank you/.test(q.toLowerCase())
     ) {
-      chats = [
-        ...chats,
+      chats.current = [
+        ...chats.current,
         {
           msg: "I am glad 😊🤗. Anything I could help you with ?",
           incomingMsg: true,
         },
       ];
-      setChatList([...chats].reverse());
+      setChatList([...chats.current].reverse());
       return;
     }
 
-    chats = [
-      ...chats,
+    chats.current = [
+      ...chats.current,
       { msg: "Didn't recognise your question 😥", incomingMsg: true },
     ];
-    setChatList([...chats].reverse());
+    setChatList([...chats.current].reverse());
     return;
   };
 
   const onSendMsg = () => {
-    chats = [...chats, { msg: msg, sentMsg: true }];
-    setChatList([...chats].reverse());
+    chats.current = [...chats.current, { msg: msg, sentMsg: true }];
+    setChatList([...chats.current].reverse());
     setTimeout(() => {
       getAnswer(msg);
     }, 1000);
